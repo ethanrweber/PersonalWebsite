@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using PersonalWebsite.Other.HelperClasses
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,11 +20,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        <vc:Navbar></vc:Navbar>
                     </ul>
                 </div>
             </div>
@@ -40,7 +38,7 @@
         </div>
     </footer>
 
-    <partial name="_Pager" model="@ViewData["PagerModel"]" />
+    <partial name="_Pager" model="@NavbarConstants.GetPagerValues(ViewData["CurrentPage"] as string)" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

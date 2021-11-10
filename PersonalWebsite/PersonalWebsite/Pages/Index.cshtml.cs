@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PersonalWebsite.Other.HelperClasses;
 
 namespace PersonalWebsite.Pages
 {
@@ -19,6 +15,7 @@ namespace PersonalWebsite.Pages
 
         public void OnGet()
         {
+            ViewData["CurrentPage"] = NavbarConstants.NavbarKeys.Home;
         }
     }
 }

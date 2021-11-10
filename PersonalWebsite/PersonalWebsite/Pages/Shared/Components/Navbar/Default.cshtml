@@ -1,0 +1,10 @@
+﻿@model Dictionary<string, string>
+@{
+}
+
+@foreach (var kvp in Model)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-page="@kvp.Value">@kvp.Key</a>
+    </li>
+}

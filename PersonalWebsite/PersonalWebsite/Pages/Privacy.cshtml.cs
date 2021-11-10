@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using PersonalWebsite.Other.HelperClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace PersonalWebsite.Pages
 
         public void OnGet()
         {
+            ViewData["CurrentPage"] = NavbarConstants.NavbarKeys.Privacy;
         }
     }
 }
