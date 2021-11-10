@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model (string, string)
+@{
+    Layout = null;
+    string leftLinkHref = string.IsNullOrWhiteSpace(Model.Item1) ? "Privacy" : Model.Item1;
+    string rightLinkHref = string.IsNullOrWhiteSpace(Model.Item2) ? "Index" : Model.Item2;
+}
+
+<style>
+    #PagerContainer {
+        position: absolute;
+        top: 45%;
+        font-size: 1.5rem;
+    }
+
+    #LeftLink::before {
+        content: '< ';
+    }
+
+    #RightLink::after {
+        content: ' >';
+    }
+
+    .PagerLink {
+        animation: PagerLinkOffHover 0.5s;
+        color: black;
+    }
+        .PagerLink:hover {
+            animation: PagerLinkOnHover 0.5s;
+
+            color: rgb(128, 128, 128);
+            text-decoration: none;
+        }
+    @@keyframes PagerLinkOnHover {
+        0% { color: inherit; }
+        25% { color: rgb(32, 32, 32); }
+        50% { color: rgb(64, 64, 64); }
+        75% { color: rgb(96, 96, 96); }
+        100% { color: rgb(128, 128, 128); }
+    }
+
+    @@keyframes PagerLinkOffHover {
+        0% { color: rgb(128, 128, 128); }
+        25% { color: rgb(96, 96, 96); }
+        50% { color: rgb(64, 64, 64); }
+        75% { color: rgb(32, 32, 32); }
+        100% { color: inherit; }
+    }
+</style>
+
+<div id="PagerContainer" class="d-flex justify-content-between w-100">
+    <a id="LeftLink" class="PagerLink" asp-page="@leftLinkHref">@leftLinkHref</a>
+    <a id="RightLink" class="PagerLink" asp-page="@rightLinkHref">@rightLinkHref</a>
+</div>
