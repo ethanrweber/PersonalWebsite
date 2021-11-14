@@ -20,7 +20,7 @@ namespace PersonalWebsite.Pages
 
         public void OnGet()
         {
-            ViewData["CurrentPage"] = NavbarConstants.NavbarKeys.Privacy;
+            ViewData["CurrentPage"] = NavbarConstants.NavbarKeys.Privacy.ToString();
         }
     }
 }

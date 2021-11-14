@@ -3,6 +3,11 @@ using System.Linq;
 
 namespace PersonalWebsite.Other.HelperClasses
 {
+    public static class Constants
+    {
+        public const string SiteName = "Ethan Weber";
+    }
+
     public static class NavbarConstants
     {
         public enum NavbarKeys

@@ -1,9 +1,18 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.ew-popout-box {
+    box-shadow: 0 0.25rem 0.75rem gray;
+    background-color: rgba(255,255,255,0.7);
+}
 
+#ew-navbar {
+    line-height: 15px;
+}
 
-
+#ew-footer {
+    line-height: 40px;
+}
 
 /* default styling past this point, ignore for now */
 

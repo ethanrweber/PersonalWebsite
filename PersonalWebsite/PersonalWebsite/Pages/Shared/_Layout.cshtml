@@ -5,15 +5,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Ethan Weber</title>
+    <title>@ViewData["Title"] - @Constants.SiteName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body id="body">
+    <style>
+        #body {
+            background-image: url("../images/ethan_landscape_16x9_blur.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+        }
+    </style>
+
+    @* Navbar *@
+    <div class="container">
+        <nav id="ew-navbar" class="ew-popout-box navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">PersonalWebsite</a>
+                <a class="navbar-brand" asp-page="/Index">Ethan Weber</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,16 +36,17 @@
                 </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
+    </div>
+
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer id="ew-footer" class="ew-popout-box border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - PersonalWebsite - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2021 - @Constants.SiteName - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

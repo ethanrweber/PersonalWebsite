@@ -12,7 +12,7 @@ namespace PersonalWebsite.Pages
     {
         public void OnGet()
         {
-            ViewData["CurrentPage"] = NavbarConstants.NavbarKeys.About;
+            ViewData["CurrentPage"] = NavbarConstants.NavbarKeys.About.ToString();
         }
     }
 }
