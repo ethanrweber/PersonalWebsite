@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using PersonalWebsite.Other.HelperClasses;
 
-namespace PersonalWebsite.Pages
+namespace PersonalWebsite.Pages.Shared
 {
-    public class AboutModel : PageModel
+    public class ProjectsModel : PageModel
     {
         public void OnGet()
         {

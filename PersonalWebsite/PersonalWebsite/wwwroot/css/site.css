@@ -14,6 +14,15 @@ for details on configuring this project to bundle and minify static web assets. 
     line-height: 40px;
 }
 
+#ew-container-top,
+#ew-container-bottom {
+    min-height: 75vh;
+}
+
+#ew-container-bottom {
+    background-color: rgb(255, 255, 255, 0.75);
+}
+
 /* default styling past this point, ignore for now */
 
 a.navbar-brand {
@@ -37,33 +46,6 @@ a {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
 }
 
 /* Sticky footer styles

@@ -12,14 +12,14 @@ namespace PersonalWebsite.Other.HelperClasses
     {
         public enum NavbarKeys
         {
-            Privacy,
-            Home,
             About,
+            Projects,
+            Privacy,
         }
         public static readonly Dictionary<string, string> NavbarValues = new()
         {
             { NavbarKeys.Privacy.ToString(), "/Privacy" },
-            { NavbarKeys.Home.ToString(), "/Index" },
+            { NavbarKeys.Projects.ToString(), "/Projects" },
             { NavbarKeys.About.ToString(), "/About" }
         };
 

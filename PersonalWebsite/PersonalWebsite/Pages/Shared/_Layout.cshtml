@@ -12,11 +12,16 @@
 <body id="body">
     <style>
         #body {
-            background-image: url("../images/ethan_landscape_16x9_blur.jpg");
+            background-image: url('../images/@(ViewData["BackgroundImage"] ?? "ethan_landscape_16x9_blur.jpg")');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center center;
             background-size: cover;
+        }
+        @@media only screen and (max-width: 900px) {
+            #body {
+                background-image: none;
+            }
         }
     </style>
 
@@ -24,7 +29,7 @@
     <div class="container">
         <nav id="ew-navbar" class="ew-popout-box navbar navbar-expand-sm navbar-toggleable-sm navbar-light mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-page="/Index">Ethan Weber</a>
+                <a class="navbar-brand" asp-page="@NavbarConstants.NavbarValues[NavbarConstants.NavbarKeys.About.ToString()]">Ethan Weber</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -38,19 +43,37 @@
         </nav>
     </div>
 
+    @* Navbar Pager *@
+    <partial name="_Pager" model="@NavbarConstants.GetPagerValues((ViewContext.RouteData.Values["page"] as string).Substring(1))" />
+
     <div class="container-fluid">
-        <main role="main" class="pb-3">
-            @RenderBody()
+        <main role="main" class="pb-3" style="min-height: 100vh;">
+            @if (IsSectionDefined("Top"))
+            {
+                <div class="container-fluid" id="ew-container-top">
+                    @await RenderSectionAsync("Top", required: false)
+                </div>
+            }
+            @if (IsSectionDefined("Bottom"))
+            {
+                <div class="container-fluid" id="ew-container-bottom">
+                    @await RenderSectionAsync("Bottom", required: false)
+                </div>
+            }
+            @if (!IsSectionDefined("Top") && !IsSectionDefined("Bottom"))
+            {
+                <div class="container">
+                    @RenderBody()
+                </div>
+            }
         </main>
     </div>
 
-    <footer id="ew-footer" class="ew-popout-box border-top footer text-muted">
+    <footer id="ew-footer" class="ew-popout-box footer text-muted">
         <div class="container">
             &copy; 2021 - @Constants.SiteName - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
-
-    <partial name="_Pager" model="@NavbarConstants.GetPagerValues(ViewData["CurrentPage"] as string)" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

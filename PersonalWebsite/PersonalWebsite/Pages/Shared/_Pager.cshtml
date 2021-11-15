@@ -4,23 +4,26 @@
 @model (Dictionary<string, string>, string, string)
 
 <style>
-    #PagerContainer {
-        position: absolute;
-        top: 40%;
-        font-size: 1.5rem;
-        padding: 1%;
-    }
-
+    #LeftLink { }
     #LeftLink::before {
         content: '< ';
     }
 
+    #RightLink {
+        /* element aligns itself to the edge of the page automatically */
+        left: 100vw;
+    }
     #RightLink::after {
         content: ' >';
     }
 
     .PagerLink {
         animation: PagerLinkOffHover 0.5s;
+
+        position: sticky;
+        top: 40vh;
+        font-size: 1.5rem;
+        padding: 1%;
         color: black;
     }
         .PagerLink:hover {
@@ -29,6 +32,13 @@
             color: rgb(128, 128, 128);
             text-decoration: none;
         }
+
+    @@media only screen and (max-width: 768px) {
+        .PagerLink {
+            display: none;
+        }
+    }
+
     @@keyframes PagerLinkOnHover {
         0% { color: inherit; }
         25% { color: rgb(32, 32, 32); }
@@ -46,7 +56,5 @@
     }
 </style>
 
-<div id="PagerContainer" class="d-flex justify-content-between w-100">
-    <a id="LeftLink" class="PagerLink" asp-page="@Model.Item1[Model.Item2]">@Model.Item2</a>
-    <a id="RightLink" class="PagerLink" asp-page="@Model.Item1[Model.Item3]">@Model.Item3</a>
-</div>
+<a id="LeftLink" class="PagerLink" asp-page="@Model.Item1[Model.Item2]">@Model.Item2</a>
+<a id="RightLink" class="PagerLink" asp-page="@Model.Item1[Model.Item3]">@Model.Item3</a>

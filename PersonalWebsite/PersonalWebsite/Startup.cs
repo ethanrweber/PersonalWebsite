@@ -19,6 +19,11 @@ namespace PersonalWebsite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            // set About page as the default page when app loads
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/About", "");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
