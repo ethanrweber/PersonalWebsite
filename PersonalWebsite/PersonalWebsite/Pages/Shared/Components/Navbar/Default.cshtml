@@ -5,6 +5,6 @@
 @foreach (var kvp in Model)
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" style="padding: 0 0.75rem 0 0.75rem;" asp-page="@kvp.Value">@kvp.Key</a>
+        <a class="nav-link @(kvp.Key == (string)ViewData["CurrentPage"] ? "text-info" : "text-dark")" style="padding: 0 0.75rem 0 0.75rem;" asp-page="@kvp.Value">@kvp.Key</a>
     </li>
 }

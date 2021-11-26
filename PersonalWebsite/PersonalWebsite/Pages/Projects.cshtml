@@ -2,3 +2,34 @@
 @model PersonalWebsite.Pages.Shared.ProjectsModel
 @{
 }
+
+<style>
+    .card-project {
+        max-width: 20vw;
+    }
+</style>
+
+<div class="d-flex justify-content-around">
+
+    @foreach (var project in Model.Projects)
+    {
+        <div class="card card-project">
+            <div class="card-header">
+                <h4>@project.Title</h4>
+            </div>
+            <div class="card-body">
+                @* background image? *@
+                <p>@project.Description</p>
+            </div>
+            <div class="card-footer">
+                <div>
+                    @if (!string.IsNullOrWhiteSpace(project.GitHubLink))
+                    {
+                        <a href="@project.GitHubLink">GitHub</a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

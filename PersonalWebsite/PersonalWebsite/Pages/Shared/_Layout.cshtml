@@ -1,5 +1,9 @@
 ﻿@using PersonalWebsite.Other.HelperClasses
 
+@{ 
+    ViewData["CurrentPage"] = (ViewContext.RouteData.Values["page"] as string).Substring(1);
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +11,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - @Constants.SiteName</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/brands.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body id="body">
     <style>
         #body {
-            background-image: url('../images/@(ViewData["BackgroundImage"] ?? "ethan_landscape_16x9_blur.jpg")');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center center;
-            background-size: cover;
+            @if((bool?)ViewData["UseBackgroundColor"] != true)
+            {
+                <text>
+                background-image: url('../images/@(ViewData["BackgroundImage"] ?? "ethan_landscape_16x9_blur.jpg")');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center center;
+                background-size: cover;
+                </text>
+            }
+            else
+            {
+                <text>
+                background-color: @(ViewData["BackgroundColor"] ?? "gray");
+                </text>
+            }
         }
         @@media only screen and (max-width: 900px) {
             #body {
@@ -44,7 +61,7 @@
     </div>
 
     @* Navbar Pager *@
-    <partial name="_Pager" model="@NavbarConstants.GetPagerValues((ViewContext.RouteData.Values["page"] as string).Substring(1))" />
+    <partial name="_Pager" model="@NavbarConstants.GetPagerValues((string)ViewData["CurrentPage"])" />
 
     <div class="container-fluid">
         <main role="main" class="pb-3" style="min-height: 100vh;">
@@ -71,12 +88,26 @@
 
     <footer id="ew-footer" class="ew-popout-box footer text-muted">
         <div class="container">
-            &copy; 2021 - @Constants.SiteName - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <span style="font-size: 1.5em;">
+                <a class="text-muted" href="https://www.instagram.com/ethan_weber/">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="text-muted"  href="https://www.linkedin.com/in/ethan-weber-186074196/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </span>
+
+            <span class="float-right">
+                &copy; 2021 - @Constants.SiteName - <a asp-page="/Privacy">Privacy</a>
+            </span>
+
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/font-awesome/js/all.min.js"></script>
+    <script src="~/lib/font-awesome/js/brands.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
